@@ -1,328 +1,238 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#070814">
-
-    <title>Hey Lydia ♡</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Tiny Page for Lydia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-    <!-- Background -->
-    <div class="stars"></div>
-    <div class="glow glow-one"></div>
-    <div class="glow glow-two"></div>
+  <!-- Ambient Particles Canvas -->
+  <canvas id="particleCanvas"></canvas>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">♕ Victor</div>
+  <!-- Confetti Canvas for Modal -->
+  <canvas id="confettiCanvas"></canvas>
 
-        <div class="navlinks">
-            <a href="#story">Story</a>
-            <a href="#invite">Invite</a>
-            <button id="music">♫ Music</button>
-        </div>
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-brand">Victor <span class="heart-accent">♡</span></div>
+    <nav class="nav-links">
+      <a href="#story" class="nav-link">Story</a>
+      <a href="#invite" class="nav-link">Invite</a>
+      <button id="musicToggleBtn" class="music-btn" aria-label="Toggle Music">
+        <span class="music-icon">♫</span>
+        <span class="music-text">Music</span>
+      </button>
     </nav>
-
-
-    <main>
-
-        <!-- HERO -->
-        <section class="hero reveal">
-
-            <div class="eyebrow">A tiny page for one person ♡</div>
-
-            <h1>
-                Hey <i>Lydia</i>
-                <span>♡</span>
-            </h1>
-
-            <h2>
-                I think we have a conversation to finish...
-            </h2>
-
-            <p>
-                The first time we met, it was already getting dark,
-                and we didn't really get a chance to talk properly.
-            </p>
-
-            <button class="go" onclick="go('story')">
-                Let's rewind ↓
-            </button>
-
-            <div class="scroll-hint">
-                scroll slowly ↓
-            </div>
-
-        </section>
-
-
-        <!-- STORY -->
-        <section id="story" class="story reveal">
-
-            <div class="section-label">
-                01 · OUR WHATSAPP STORY
-            </div>
-
-            <div class="grid">
-
-                <div class="story-text">
-
-                    <h2>How it started...</h2>
-
-                    <p>
-                        We met, said hi, exchanged a few messages,
-                        and somehow life happened.
-                    </p>
-
-                    <p>
-                        You were kind, real and easy to talk to.
-                        I just wish we had more time that day
-                        than just the dark.
-                    </p>
-
-                    <div class="quote">
-                        "Maybe we just needed a better second chance."
-                    </div>
-
-                    <strong>
-                        So here's my request... 👀
-                    </strong>
-
-                </div>
-
-
-                <!-- PHONE -->
-                <div class="phone">
-
-                    <div class="phone-top">
-                        <div class="avatar">L</div>
-
-                        <div>
-                            <b>Lydia</b>
-                            <small>online</small>
-                        </div>
-                    </div>
-
-                    <div class="chat">
-
-                        <div class="message left">
-                            Morning too
-                            <span>09:12</span>
-                        </div>
-
-                        <div class="message right">
-                            How is you?
-                            <span>09:13</span>
-                        </div>
-
-                        <div class="message left">
-                            I'm good
-                            <span>09:14</span>
-                        </div>
-
-                        <div class="message right">
-                            Unanikumbuka kweli 😅
-                            <span>09:15</span>
-                        </div>
-
-                        <div class="message left">
-                            Apana 😂
-                            <span>09:16</span>
-                        </div>
-
-                        <div class="message right">
-                            Hi girl... I just want to be your friend.
-                            How do you see it? 😎
-                            <span>09:17</span>
-                        </div>
-
-                        <div class="message left">
-                            No problem
-                            <span>09:18</span>
-                        </div>
-
-                    </div>
-
-                    <div class="typing">
-                        Lydia is typing...
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- PHOTO SECTION -->
-        <section class="dark reveal">
-
-            <div class="grid photo-grid">
-
-                <div class="photo-card">
-
-                    <!--
-                    IMPORTANT:
-                    Upload Lydia's photo to the repository and name it:
-
-                    lydia.jpg
-
-                    Then this image will automatically appear here.
-                    -->
-                    <img src="lydia.jpg" alt="Lydia">
-
-                    <div class="photo-caption">
-                        Same place. Just better timing next time. ♡
-                    </div>
-
-                    <div class="photo-shine"></div>
-
-                </div>
-
-
-                <div class="missed-chance">
-
-                    <div class="section-label">
-                        02 · THE MISSED CHANCE
-                    </div>
-
-                    <h2>
-                        It was already dark...
-                    </h2>
-
-                    <p>
-                        The day we met, the sun was already setting.
-                        We didn't get the chance to talk properly.
-                    </p>
-
-                    <div class="big-question">
-                        “What if we actually got a real chance to talk?”
-                    </div>
-
-                    <div class="little-heart">
-                        ♡
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- INVITATION -->
-        <section id="invite" class="center reveal">
-
-            <div class="section-label">
-                03 · THE INVITATION
-            </div>
-
-            <h2>
-                So, can we fix that?
-            </h2>
-
-            <p>
-                I'd love to take you out for a simple hangout —
-                good vibes, great conversation, and a chance
-                to know each other better.
-            </p>
-
-            <div class="buttons">
-
-                <button class="go" onclick="yes()">
-                    Okay, let's hang out 😊
-                </button>
-
-                <button id="noBtn" class="alt" onclick="maybe()">
-                    Hmm... convince me 😂
-                </button>
-
-            </div>
-
-            <small class="no-pressure">
-                No pressure. Just a friendly invitation. ❤️
-            </small>
-
-        </section>
-
-
-        <!-- PLAN -->
-        <section class="plan reveal">
-
-            <div class="section-label">
-                04 · THE PLAN
-            </div>
-
-            <h2>
-                Nothing complicated.
-            </h2>
-
-            <div class="cards">
-
-                <article>
-                    <div class="card-icon">📅</div>
-                    <b>When</b>
-                    <p>This week — you choose.</p>
-                </article>
-
-                <article>
-                    <div class="card-icon">📍</div>
-                    <b>Where</b>
-                    <p>Where we met first or somewhere outdoors.</p>
-                </article>
-
-                <article>
-                    <div class="card-icon">☕</div>
-                    <b>Vibe</b>
-                    <p>Relaxed. Good talks. No pressure.</p>
-                </article>
-
-                <article>
-                    <div class="card-icon">😊</div>
-                    <b>Bring</b>
-                    <p>Just yourself.</p>
-                </article>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- MODAL -->
-    <div id="modal">
-
-        <div class="modal-box">
-
-            <div class="modal-heart">♥</div>
-
-            <h2 id="mt"></h2>
-
-            <p id="mx"></p>
-
-            <button id="modalBack" class="go" onclick="closeModal()">
-                Back
-            </button>
-
+  </header>
+
+  <main>
+    <!-- Section 1: Hero -->
+    <section id="hero" class="section hero-section">
+      <div class="hero-content">
+        <span class="badge">A tiny page for one person</span>
+        <h1 class="hero-title">Hey Lydia <span class="heart-pulse">♡</span></h1>
+        <p class="hero-subtitle">I think we have a conversation to finish...</p>
+        <p class="hero-description">
+          The first time we met, it was already getting dark, and we didn't really get a chance to talk properly.
+        </p>
+        <a href="#story" class="btn btn-primary btn-glow">
+          Let's rewind <span class="arrow-down">↓</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Section 2: Our Story (WhatsApp Recreation) -->
+    <section id="story" class="section story-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="subheading">Rewind</span>
+          <h2>Where it started...</h2>
+          <p>We continued chatting on WhatsApp, but texting only tells half the story.</p>
         </div>
 
+        <!-- Simulated WhatsApp Phone Screen -->
+        <div class="phone-wrapper reveal">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="whatsapp-header">
+              <div class="avatar-circle">L</div>
+              <div class="user-info">
+                <span class="user-name">Lydia</span>
+                <span class="user-status">online</span>
+              </div>
+            </div>
+
+            <div class="whatsapp-chat" id="chatWindow">
+              <div class="chat-date">WhatsApp Conversation</div>
+              
+              <div class="message msg-lydia reveal-msg">
+                <div class="msg-bubble">Morning too 😊</div>
+                <span class="msg-time">08:14 AM</span>
+              </div>
+
+              <div class="message msg-victor reveal-msg">
+                <div class="msg-bubble">How is you?</div>
+                <span class="msg-time">08:15 AM</span>
+              </div>
+
+              <div class="message msg-lydia reveal-msg">
+                <div class="msg-bubble">I'm good</div>
+                <span class="msg-time">08:16 AM</span>
+              </div>
+
+              <div class="message msg-victor reveal-msg">
+                <div class="msg-bubble">Unanikumbuka kweli 😅</div>
+                <span class="msg-time">08:18 AM</span>
+              </div>
+
+              <div class="message msg-lydia reveal-msg">
+                <div class="msg-bubble">Apana 😂</div>
+                <span class="msg-time">08:19 AM</span>
+              </div>
+
+              <div class="message msg-victor reveal-msg">
+                <div class="msg-bubble">Hi girl... I just want to be your friend. How do you see it? 😎</div>
+                <span class="msg-time">08:21 AM</span>
+              </div>
+
+              <div class="message msg-lydia reveal-msg">
+                <div class="msg-bubble">No problem</div>
+                <span class="msg-time">08:23 AM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: The Missed Chance -->
+    <section id="missed-chance" class="section missed-chance-section">
+      <div class="container">
+        <div class="glass-card missed-card reveal">
+          <div class="moon-icon">🌙</div>
+          <h2>It was already dark...</h2>
+          <p>
+            When we met in person, night was catching up fast. We barely scratched the surface, and before we knew it, it was time to leave.
+          </p>
+          <p class="highlight-text">
+            Maybe we should give that conversation another chance in full daylight?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Lydia's Photo -->
+    <section id="photo-section" class="section photo-section">
+      <div class="container">
+        <div class="photo-card-wrapper reveal">
+          <div class="photo-frame">
+            <!-- Uses lydia.jpg in the root directory -->
+            <img src="lydia.jpg" alt="Lydia" id="lydiaPhoto" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';" />
+            <div class="photo-shine"></div>
+          </div>
+          <p class="photo-caption">The face behind the "No problem" reply ✨</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5 & 6: The Invitation & Convince Me Interaction -->
+    <section id="invite" class="section invite-section">
+      <div class="container">
+        <div class="glass-card invite-card reveal">
+          <span class="badge">The Simple Question</span>
+          <h2>So, can we fix that?</h2>
+          <p class="invite-description">
+            I'd love to take you out for a simple hangout — good vibes, great conversation, and a chance to know each other better.
+          </p>
+
+          <!-- Dynamic Interaction Area -->
+          <div id="convinceContainer" class="convince-container hidden">
+            <p id="convinceText" class="convince-text">Wait… already? 😭</p>
+          </div>
+
+          <div class="button-group">
+            <button id="yesBtn" class="btn btn-primary btn-glow">
+              Okay, let's hang out 😊
+            </button>
+            <button id="noBtn" class="btn btn-secondary">
+              Hmm... convince me 😂
+            </button>
+          </div>
+
+          <div id="declineNotice" class="decline-notice hidden">
+            <p>Fair enough 😌<br>No pressure at all. The invitation stays open whenever you feel like it!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: The Plan -->
+    <section id="plan" class="section plan-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="subheading">Low Pressure</span>
+          <h2>The Details</h2>
+        </div>
+
+        <div class="plan-grid reveal">
+          <div class="plan-card">
+            <div class="plan-icon">📅</div>
+            <h3>WHEN</h3>
+            <p>This week — you choose the day & time.</p>
+          </div>
+
+          <div class="plan-card">
+            <div class="plan-icon">📍</div>
+            <h3>WHERE</h3>
+            <p>Where we met first / somewhere outside / a simple nature walk.</p>
+          </div>
+
+          <div class="plan-card">
+            <div class="plan-icon">✨</div>
+            <h3>VIBE</h3>
+            <p>Relaxed. Good talks. Zero stress.</p>
+          </div>
+
+          <div class="plan-card">
+            <div class="plan-icon">🎒</div>
+            <h3>BRING</h3>
+            <p>Just yourself and your good mood.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Section 7: Success Modal -->
+  <div id="successModal" class="modal-overlay hidden">
+    <div class="modal-content glass-card">
+      <button id="closeModal" class="modal-close">&times;</button>
+      <div class="modal-body">
+        <div class="modal-icon">🎉</div>
+        <h2>Yay, Lydia! ❤️</h2>
+        <p>Now just tell me on WhatsApp which day works best for you 😄</p>
+        <a id="whatsappLink" href="https://wa.me/?text=Hey%20Victor!%20I%20saw%20your%20website.%20Let's%20hang%20out!" target="_blank" class="btn btn-primary btn-glow">
+          Send a message on WhatsApp 💬
+        </a>
+      </div>
     </div>
+  </div>
 
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Made with <span class="heart-accent">♥</span> by Victor for Lydia</p>
+  </footer>
 
-    <!-- FOOTER -->
-    <footer>
-        Made with ♥ by Victor
-        <span>for a dear friend... Lydia</span>
-    </footer>
+  <!-- Optional HTML5 Audio Element for custom music file -->
+  <audio id="bgAudio" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
 
-
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
