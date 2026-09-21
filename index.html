@@ -1,1 +1,328 @@
-<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hey Lydia ♡</title><link rel="stylesheet" href="style.css"></head><body><nav>♕ Victor <span><a href="#story">Story</a> <a href="#invite">Invite</a> <button id="music">♫ Music</button></span></nav><div class="stars"></div><main><section class="hero"><small>A tiny page for one person</small><h1>Hey <i>Lydia</i> ♡</h1><h2>I think we have a conversation to finish...</h2><p>The first time we met, it was already getting dark, and we didn't really get a chance to talk properly.</p><button class="go" onclick="go('story')">Let's rewind ↓</button></section><section id="story"><small>01 · OUR WHATSAPP STORY</small><div class="grid"><div><h2>How it started...</h2><p>We met, said hi, exchanged a few messages, and life happened.</p><p>You were kind, real and easy to talk to. I just wish we had more time that day than just the dark.</p><strong>So here's my request...</strong></div><div class="phone"><header>● Lydia <small>online</small></header><div class="chat"><b>Morning too</b><b class="r">How is you?</b><b>I'm good</b><b class="r">Unanikumbuka kweli 😅</b><b>Apana 😂</b><b class="r">Hi girl... I just want to be your friend. How do you see it? 😎</b><b>No problem</b></div></div></div></section><section class="dark"><div class="grid"><div class="photo">🌇<small>Same place. Just better timing next time. ♡</small></div><div><small>02 · THE MISSED CHANCE</small><h2>It was already dark...</h2><p>The day we met, the sun was already setting. We didn't get the chance to talk properly.</p><em>“What if we actually got a real chance to talk?”</em></div></div></section><section id="invite" class="center"><small>03 · THE INVITATION</small><h2>So, can we fix that?</h2><p>I'd love to take you out for a simple hangout — good vibes, great conversation, and a chance to know each other better.</p><button class="go" onclick="yes()">Okay, let's hang out 😊</button><button class="alt" onclick="maybe()">Hmm... convince me 😂</button><small>No pressure. Just a friendly invitation. ❤️</small></section><section><small>04 · THE PLAN</small><h2>Nothing complicated.</h2><div class="cards"><article>📅<b>When</b><p>This week — you choose.</p></article><article>📍<b>Where</b><p>where we met first/outside on a nature walk.</p></article><article>☕<b>Vibe</b><p>Relaxed. Good talks.</p></article><article>😊<b>Bring</b><p>Just yourself.</p></article></div></section></main><div id="modal"><div><big>♥</big><h2 id="mt"></h2><p id="mx"></p><button class="go" onclick="modal.style.display='none'">Back</button></div></div><footer>Made with ♥ by Victor for dear friend... lydia</footer><script src="script.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#070814">
+
+    <title>Hey Lydia ♡</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="stars"></div>
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">♕ Victor</div>
+
+        <div class="navlinks">
+            <a href="#story">Story</a>
+            <a href="#invite">Invite</a>
+            <button id="music">♫ Music</button>
+        </div>
+    </nav>
+
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero reveal">
+
+            <div class="eyebrow">A tiny page for one person ♡</div>
+
+            <h1>
+                Hey <i>Lydia</i>
+                <span>♡</span>
+            </h1>
+
+            <h2>
+                I think we have a conversation to finish...
+            </h2>
+
+            <p>
+                The first time we met, it was already getting dark,
+                and we didn't really get a chance to talk properly.
+            </p>
+
+            <button class="go" onclick="go('story')">
+                Let's rewind ↓
+            </button>
+
+            <div class="scroll-hint">
+                scroll slowly ↓
+            </div>
+
+        </section>
+
+
+        <!-- STORY -->
+        <section id="story" class="story reveal">
+
+            <div class="section-label">
+                01 · OUR WHATSAPP STORY
+            </div>
+
+            <div class="grid">
+
+                <div class="story-text">
+
+                    <h2>How it started...</h2>
+
+                    <p>
+                        We met, said hi, exchanged a few messages,
+                        and somehow life happened.
+                    </p>
+
+                    <p>
+                        You were kind, real and easy to talk to.
+                        I just wish we had more time that day
+                        than just the dark.
+                    </p>
+
+                    <div class="quote">
+                        "Maybe we just needed a better second chance."
+                    </div>
+
+                    <strong>
+                        So here's my request... 👀
+                    </strong>
+
+                </div>
+
+
+                <!-- PHONE -->
+                <div class="phone">
+
+                    <div class="phone-top">
+                        <div class="avatar">L</div>
+
+                        <div>
+                            <b>Lydia</b>
+                            <small>online</small>
+                        </div>
+                    </div>
+
+                    <div class="chat">
+
+                        <div class="message left">
+                            Morning too
+                            <span>09:12</span>
+                        </div>
+
+                        <div class="message right">
+                            How is you?
+                            <span>09:13</span>
+                        </div>
+
+                        <div class="message left">
+                            I'm good
+                            <span>09:14</span>
+                        </div>
+
+                        <div class="message right">
+                            Unanikumbuka kweli 😅
+                            <span>09:15</span>
+                        </div>
+
+                        <div class="message left">
+                            Apana 😂
+                            <span>09:16</span>
+                        </div>
+
+                        <div class="message right">
+                            Hi girl... I just want to be your friend.
+                            How do you see it? 😎
+                            <span>09:17</span>
+                        </div>
+
+                        <div class="message left">
+                            No problem
+                            <span>09:18</span>
+                        </div>
+
+                    </div>
+
+                    <div class="typing">
+                        Lydia is typing...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PHOTO SECTION -->
+        <section class="dark reveal">
+
+            <div class="grid photo-grid">
+
+                <div class="photo-card">
+
+                    <!--
+                    IMPORTANT:
+                    Upload Lydia's photo to the repository and name it:
+
+                    lydia.jpg
+
+                    Then this image will automatically appear here.
+                    -->
+                    <img src="lydia.jpg" alt="Lydia">
+
+                    <div class="photo-caption">
+                        Same place. Just better timing next time. ♡
+                    </div>
+
+                    <div class="photo-shine"></div>
+
+                </div>
+
+
+                <div class="missed-chance">
+
+                    <div class="section-label">
+                        02 · THE MISSED CHANCE
+                    </div>
+
+                    <h2>
+                        It was already dark...
+                    </h2>
+
+                    <p>
+                        The day we met, the sun was already setting.
+                        We didn't get the chance to talk properly.
+                    </p>
+
+                    <div class="big-question">
+                        “What if we actually got a real chance to talk?”
+                    </div>
+
+                    <div class="little-heart">
+                        ♡
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INVITATION -->
+        <section id="invite" class="center reveal">
+
+            <div class="section-label">
+                03 · THE INVITATION
+            </div>
+
+            <h2>
+                So, can we fix that?
+            </h2>
+
+            <p>
+                I'd love to take you out for a simple hangout —
+                good vibes, great conversation, and a chance
+                to know each other better.
+            </p>
+
+            <div class="buttons">
+
+                <button class="go" onclick="yes()">
+                    Okay, let's hang out 😊
+                </button>
+
+                <button id="noBtn" class="alt" onclick="maybe()">
+                    Hmm... convince me 😂
+                </button>
+
+            </div>
+
+            <small class="no-pressure">
+                No pressure. Just a friendly invitation. ❤️
+            </small>
+
+        </section>
+
+
+        <!-- PLAN -->
+        <section class="plan reveal">
+
+            <div class="section-label">
+                04 · THE PLAN
+            </div>
+
+            <h2>
+                Nothing complicated.
+            </h2>
+
+            <div class="cards">
+
+                <article>
+                    <div class="card-icon">📅</div>
+                    <b>When</b>
+                    <p>This week — you choose.</p>
+                </article>
+
+                <article>
+                    <div class="card-icon">📍</div>
+                    <b>Where</b>
+                    <p>Where we met first or somewhere outdoors.</p>
+                </article>
+
+                <article>
+                    <div class="card-icon">☕</div>
+                    <b>Vibe</b>
+                    <p>Relaxed. Good talks. No pressure.</p>
+                </article>
+
+                <article>
+                    <div class="card-icon">😊</div>
+                    <b>Bring</b>
+                    <p>Just yourself.</p>
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MODAL -->
+    <div id="modal">
+
+        <div class="modal-box">
+
+            <div class="modal-heart">♥</div>
+
+            <h2 id="mt"></h2>
+
+            <p id="mx"></p>
+
+            <button id="modalBack" class="go" onclick="closeModal()">
+                Back
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+        Made with ♥ by Victor
+        <span>for a dear friend... Lydia</span>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
