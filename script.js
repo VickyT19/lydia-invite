@@ -1,407 +1,269 @@
-/* =========================
-   BASIC NAVIGATION
-========================= */
+document.addEventListener('DOMContentLoaded', () => {
+  /* ==========================================================================
+     1. BACKGROUND PARTICLES CANVAS
+     ========================================================================== */
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
 
-const modal = document.getElementById("modal");
+  let width, height;
+  let particles = [];
 
-function go(id){
-    document.getElementById(id).scrollIntoView({
-        behavior:"smooth"
+  function resizeCanvas() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = Math.random() * 2 + 0.5;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.speedY = (Math.random() - 0.5) * 0.3;
+      this.opacity = Math.random() * 0.5 + 0.2;
+    }
+
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+        this.reset();
+      }
+    }
+
+    draw() {
+      ctx.fillStyle = `rgba(255, 101, 163, ${this.opacity})`;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  // Initialize Particles
+  const particleCount = Math.min(Math.floor(window.innerWidth / 15), 60);
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach(p => {
+      p.update();
+      p.draw();
     });
-}
+    requestAnimationFrame(animateParticles);
+  }
 
+  animateParticles();
 
-/* =========================
-   YES BUTTON
-========================= */
+  /* ==========================================================================
+     2. SCROLL REVEAL OBSERVER
+     ========================================================================== */
+  const revealElements = document.querySelectorAll('.reveal');
 
-function yes(){
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.15 });
 
-    document.getElementById("mt").textContent =
-        "Yay, Lydia! ❤️";
+  revealElements.forEach(el => revealObserver.observe(el));
 
-    document.getElementById("mx").textContent =
-        "Now just tell me which day works for you 😄";
+  /* ==========================================================================
+     3. ANIMATED WHATSAPP CHAT SEQUENCE
+     ========================================================================== */
+  const chatMessages = document.querySelectorAll('.reveal-msg');
+  const storySection = document.getElementById('story');
+  let chatAnimated = false;
 
-    document.getElementById("modalBack").textContent =
-        "Let's do this 😊";
+  const chatObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !chatAnimated) {
+        chatAnimated = true;
+        chatMessages.forEach((msg, index) => {
+          setTimeout(() => {
+            msg.classList.add('visible');
+          }, index * 600); // 600ms gap between messages
+        });
+      }
+    });
+  }, { threshold: 0.3 });
 
-    modal.style.display = "grid";
+  if (storySection) {
+    chatObserver.observe(storySection);
+  }
 
-    confetti();
+  /* ==========================================================================
+     4. PLAYFUL "CONVINCE ME" INTERACTION
+     ========================================================================== */
+  const noBtn = document.getElementById('noBtn');
+  const convinceContainer = document.getElementById('convinceContainer');
+  const convinceText = document.getElementById('convinceText');
+  const declineNotice = document.getElementById('declineNotice');
 
-}
+  const convinceSteps = [
+    "Wait… already? 😭",
+    "Lydia, hear me out 😌",
+    "Final argument… 🎤😂"
+  ];
 
+  let clickCount = 0;
 
-/* =========================
-   PLAYFUL NO SEQUENCE
-========================= */
+  noBtn.addEventListener('click', () => {
+    if (clickCount < convinceSteps.length) {
+      convinceContainer.classList.remove('hidden');
+      convinceText.textContent = convinceSteps[clickCount];
+      
+      // Shake effect
+      noBtn.style.transform = 'translateX(5px)';
+      setTimeout(() => noBtn.style.transform = 'translateX(-5px)', 50);
+      setTimeout(() => noBtn.style.transform = 'translateX(0)', 100);
 
-let noCount = 0;
+      clickCount++;
 
-function maybe(){
-
-    noCount++;
-
-    const title =
-        document.getElementById("mt");
-
-    const message =
-        document.getElementById("mx");
-
-    const backButton =
-        document.getElementById("modalBack");
-
-    const noBtn =
-        document.getElementById("noBtn");
-
-
-    /* FIRST TIME */
-
-    if(noCount === 1){
-
-        title.textContent =
-            "Wait… already? 😭";
-
-        message.textContent =
-            "You clicked convince me before I even finished my case 😂";
-
-        backButton.textContent =
-            "Okay, continue 👀";
-
-        noBtn.textContent =
-            "Still thinking... 😂";
+      if (clickCount === convinceSteps.length) {
+        noBtn.textContent = "Okay fine, tell me more 😂";
+      }
+    } else {
+      // Respectful decline option after playful teasing
+      convinceContainer.classList.add('hidden');
+      noBtn.classList.add('hidden');
+      declineNotice.classList.remove('hidden');
     }
+  });
 
+  /* ==========================================================================
+     5. YES BUTTON & CONFETTI MODAL
+     ========================================================================== */
+  const yesBtn = document.getElementById('yesBtn');
+  const successModal = document.getElementById('successModal');
+  const closeModal = document.getElementById('closeModal');
 
-    /* SECOND TIME */
+  yesBtn.addEventListener('click', () => {
+    successModal.classList.remove('hidden');
+    triggerConfetti();
+  });
 
-    else if(noCount === 2){
+  closeModal.addEventListener('click', () => {
+    successModal.classList.add('hidden');
+  });
 
-        title.textContent =
-            "Lydia, hear me out 😌";
+  /* Simple Canvas Confetti */
+  const confettiCanvas = document.getElementById('confettiCanvas');
+  const cCtx = confettiCanvas.getContext('2d');
+  let confettiPieces = [];
 
-        message.textContent =
-            "Good conversation, a little fresh air, and absolutely no complicated agenda. Surely that deserves a chance? 😂";
+  function triggerConfetti() {
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+    confettiPieces = [];
 
-        backButton.textContent =
-            "Hmm… maybe 👀";
-
-        noBtn.textContent =
-            "You are stubborn 😂";
+    for (let i = 0; i < 80; i++) {
+      confettiPieces.push({
+        x: Math.random() * confettiCanvas.width,
+        y: Math.random() * confettiCanvas.height - confettiCanvas.height,
+        color: ['#ff65a3', '#9d4edd', '#4ea8de', '#ffd166'][Math.floor(Math.random() * 4)],
+        size: Math.random() * 8 + 4,
+        speedY: Math.random() * 3 + 2,
+        speedX: Math.random() * 2 - 1
+      });
     }
+    animateConfetti();
+  }
 
+  function animateConfetti() {
+    cCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    let active = false;
 
-    /* THIRD TIME */
+    confettiPieces.forEach(p => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      cCtx.fillStyle = p.color;
+      cCtx.fillRect(p.x, p.y, p.size, p.size);
 
-    else if(noCount === 3){
+      if (p.y < confettiCanvas.height) active = true;
+    });
 
-        title.textContent =
-            "Final argument… 🎤😂";
-
-        message.textContent =
-            "I promise I'm not asking for anything dramatic. Just one simple hangout and a chance to finish that conversation properly.";
-
-        backButton.textContent =
-            "I'll think about it 😌";
-
-        noBtn.textContent =
-            "Last chance 👀";
+    if (active) {
+      requestAnimationFrame(animateConfetti);
     }
+  }
 
+  /* ==========================================================================
+     6. AMBIENT BACKGROUND MUSIC CONTROLLER
+     ========================================================================== */
+  const musicToggleBtn = document.getElementById('musicToggleBtn');
+  const bgAudio = document.getElementById('bgAudio');
+  let isPlaying = false;
+  let synthAudioCtx = null;
+  let synthOscillators = [];
 
-    /* FINAL NO */
-
-    else{
-
-        title.textContent =
-            "Fair enough 😌";
-
-        message.textContent =
-            "No pressure at all. Take your time — the invitation stays open.";
-
-        backButton.textContent =
-            "Back";
-
-        noBtn.textContent =
-            "Maybe another time 😌";
+  // Dual approach: Try audio file first, fallback to synthesized calm chord generator
+  musicToggleBtn.addEventListener('click', () => {
+    if (!isPlaying) {
+      bgAudio.play().then(() => {
+        isPlaying = true;
+        musicToggleBtn.classList.add('playing');
+        musicToggleBtn.querySelector('.music-text').textContent = 'Playing ♫';
+      }).catch(() => {
+        // Audio file missing or failed -> fallback to Web Audio API ambient synth
+        startSynthesizedAmbient();
+        isPlaying = true;
+        musicToggleBtn.classList.add('playing');
+        musicToggleBtn.querySelector('.music-text').textContent = 'Playing ♫';
+      });
+    } else {
+      bgAudio.pause();
+      stopSynthesizedAmbient();
+      isPlaying = false;
+      musicToggleBtn.classList.remove('playing');
+      musicToggleBtn.querySelector('.music-text').textContent = 'Music';
     }
+  });
 
+  function startSynthesizedAmbient() {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    synthAudioCtx = new AudioContext();
 
-    modal.style.display = "grid";
+    // Calm ambient Fmaj7 / Cmaj7 chord frequencies
+    const freqs = [174.61, 220.00, 261.63, 329.63]; 
+    
+    freqs.forEach(freq => {
+      const osc = synthAudioCtx.createOscillator();
+      const gain = synthAudioCtx.createGain();
 
-}
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, synthAudioCtx.currentTime);
 
+      gain.gain.setValueAtTime(0.02, synthAudioCtx.currentTime);
 
-/* =========================
-   CLOSE MODAL
-========================= */
+      osc.connect(gain);
+      gain.connect(synthAudioCtx.destination);
 
-function closeModal(){
+      osc.start();
+      synthOscillators.push(osc);
+    });
+  }
 
-    modal.style.display = "none";
-}
-
-
-/* =========================
-   MUSIC
-========================= */
-
-let ctx;
-let playing = false;
-let timer;
-
-const musicButton =
-    document.getElementById("music");
-
-
-musicButton.onclick = () => {
-
-    playing = !playing;
-
-    if(!ctx){
-
-        ctx = new (
-            window.AudioContext ||
-            window.webkitAudioContext
-        )();
-
+  function stopSynthesizedAmbient() {
+    synthOscillators.forEach(osc => {
+      try { osc.stop(); } catch(e) {}
+    });
+    synthOscillators = [];
+    if (synthAudioCtx) {
+      synthAudioCtx.close();
+      synthAudioCtx = null;
     }
-
-
-    if(playing){
-
-        ctx.resume();
-
-        music();
-
-        musicButton.textContent =
-            "♫ Playing";
-
-    }
-
-    else{
-
-        ctx.suspend();
-
-        musicButton.textContent =
-            "♫ Music";
-
-    }
-
-};
-
-
-function music(){
-
-    if(!playing) return;
-
-
-    const notes = [
-        261.6,
-        329.6,
-        392,
-        329.6,
-        293.7,
-        349.2,
-        440,
-        349.2
-    ];
-
-
-    const note =
-        notes[Math.floor(Math.random() * notes.length)];
-
-
-    const oscillator =
-        ctx.createOscillator();
-
-    const gain =
-        ctx.createGain();
-
-
-    oscillator.frequency.value =
-        note;
-
-    oscillator.type =
-        "sine";
-
-
-    gain.gain.setValueAtTime(
-        0.0001,
-        ctx.currentTime
-    );
-
-
-    gain.gain.exponentialRampToValueAtTime(
-        0.035,
-        ctx.currentTime + 0.12
-    );
-
-
-    gain.gain.exponentialRampToValueAtTime(
-        0.0001,
-        ctx.currentTime + 1.8
-    );
-
-
-    oscillator.connect(gain);
-
-    gain.connect(ctx.destination);
-
-
-    oscillator.start();
-
-    oscillator.stop(
-        ctx.currentTime + 2
-    );
-
-
-    timer =
-        setTimeout(music,700);
-
-}
-
-
-/* =========================
-   CONFETTI
-========================= */
-
-function confetti(){
-
-    for(let i = 0; i < 55; i++){
-
-        const piece =
-            document.createElement("span");
-
-
-        piece.textContent =
-            Math.random() > .5
-            ? "♥"
-            : "✦";
-
-
-        piece.style.position =
-            "fixed";
-
-        piece.style.left =
-            "50%";
-
-        piece.style.top =
-            "45%";
-
-        piece.style.zIndex =
-            "120";
-
-        piece.style.color =
-            "#ff6aaa";
-
-        piece.style.fontSize =
-            `${12 + Math.random() * 14}px`;
-
-        piece.style.pointerEvents =
-            "none";
-
-
-        document.body.appendChild(piece);
-
-
-        const x =
-            (Math.random() - .5) * 650;
-
-        const y =
-            200 + Math.random() * 500;
-
-        const rotation =
-            Math.random() * 900;
-
-
-        piece.animate(
-
-            [
-                {
-                    transform:
-                        "translate(0,0) scale(1)",
-                    opacity:1
-                },
-
-                {
-                    transform:
-                        `translate(${x}px,${y}px)
-                         rotate(${rotation}deg)
-                         scale(.3)`,
-
-                    opacity:0
-                }
-            ],
-
-            {
-                duration:
-                    1300 + Math.random() * 900,
-
-                easing:
-                    "cubic-bezier(.2,.8,.3,1)"
-            }
-
-        ).onfinish = () =>
-            piece.remove();
-
-    }
-
-}
-
-
-/* =========================
-   SCROLL ANIMATIONS
-========================= */
-
-const revealElements =
-    document.querySelectorAll(".reveal");
-
-
-const observer =
-    new IntersectionObserver(
-
-        entries => {
-
-            entries.forEach(entry => {
-
-                if(entry.isIntersecting){
-
-                    entry.target.classList.add(
-                        "visible"
-                    );
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold:.15
-        }
-
-    );
-
-
-revealElements.forEach(element => {
-
-    observer.observe(element);
-
-});
-
-
-/* =========================
-   MODAL BACKDROP
-========================= */
-
-modal.addEventListener("click", event => {
-
-    if(event.target === modal){
-
-        closeModal();
-
-    }
-
+  }
 });
