@@ -5,7 +5,7 @@
   --bg-dark: #0a0c16;
   --bg-card: rgba(18, 22, 41, 0.65);
   --border-color: rgba(255, 255, 255, 0.1);
-  --primary-glow: #ff65a3;
+  --primary-glow: #4ea8de;
   --accent-purple: #9d4edd;
   --accent-blue: #4ea8de;
   --text-main: #f8f9fa;
@@ -705,4 +705,21 @@ h2 {
   .btn {
     width: 100%;
   }
+}
+/* --- New Crown Styling --- */
+
+.crown-accent {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 1.2rem;
+  /* Applies a powerful blue glow to make the emoji look blue */
+  filter: drop-shadow(0 0 5px var(--primary-glow)) 
+          drop-shadow(0 0 10px var(--accent-purple));
+  animation: crownFloat 3s ease-in-out infinite;
+}
+
+/* Subtle floating animation for the crown */
+@keyframes crownFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
 }
